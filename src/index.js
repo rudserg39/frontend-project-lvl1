@@ -1,5 +1,6 @@
 import readlineSync from 'readline-sync';
 
+
 export const MAX_INTEGER = 16;
 
 const ANSWERS_LIMIT = 3;
@@ -19,7 +20,7 @@ const name = getName();
 
 export const getRandomInteger = (max) => Math.floor(Math.random() * Math.floor(max));
 
-export const getAnswer = () => readlineSync.question('Your answer: ');
+export const askQuestion = (expression) => console.log(`Question: ${expression}`);
 
 export const isCorrect = (answer, correctAnswer) => {
   if (answer === correctAnswer) {
@@ -30,7 +31,7 @@ export const isCorrect = (answer, correctAnswer) => {
   return false;
 };
 
-export const askQuestion = (expression) => `Question: ${expression}`;
+export const getAnswer = () => readlineSync.question('Your answer: ');
 
 export const countCorrectAnswers = (greeting, expression) => {
   console.log(greeting);

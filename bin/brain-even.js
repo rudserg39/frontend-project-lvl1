@@ -1,15 +1,17 @@
 #!/usr/bin/env node
 
 import {
-  MAX_INTEGER, getRandomInteger, getAnswer, isCorrect,
-  askQuestion, countCorrectAnswers, getRandomExpression,
+  MAX_INTEGER, getRandomInteger, askQuestion, isCorrect,
+  getAnswer, countCorrectAnswers, getRandomExpression,
 } from '../src/index.js';
 
 
+const isEven = (integer) => integer % 2 === 0;
+
 const expression = {
   CHECK_PARITY(integer = getRandomInteger(MAX_INTEGER)) {
-    console.log(askQuestion(integer));
-    return isCorrect(getAnswer(), integer % 2 === 0 ? 'yes' : 'no');
+    askQuestion(integer);
+    return isCorrect(getAnswer(), isEven(integer) ? 'yes' : 'no');
   },
 };
 
