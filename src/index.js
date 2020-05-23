@@ -48,7 +48,3 @@ export const countCorrectAnswers = (greeting, expression) => {
     console.log(`Congratulations, ${name}!`);
   }
 };
-
-export const getRandomExpression = (expression) => expression[
-  Object.keys(expression)[getRandomInteger(Object.keys(expression).length)]
-];
