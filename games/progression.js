@@ -1,10 +1,10 @@
-import {
-  MAX_INTEGER, getRandomInteger, askQuestion,
-  isCorrect, getAnswer, countCorrectAnswers,
-} from '../src/index.js';
+import { MAX_INTEGER, getRandomInteger } from '../helpers/utils.js';
+import gameRunner from '../src/index.js';
 
 
 const ELEMENTS_TO_ADD = 9;
+
+const UNKNOWN_ELEMENT = '..';
 
 const taskText = 'What number is missing in the progression?';
 
@@ -17,14 +17,16 @@ const getProgression = () => {
   return progression;
 };
 
-const getHiddenElement = (progression) => progression[getRandomInteger(progression.length)];
+const getHiddenElement = (progression) => progression[getRandomInteger(progression.length - 1)];
 
-const checkHiddenElement = (progression = getProgression(), hiddenElement = getHiddenElement(progression), string = progression.join(' ').replace(`${hiddenElement}`, '..')) => {
-  askQuestion(string);
-  return isCorrect(Number(getAnswer()), hiddenElement);
+const getTaskData = () => {
+  const progression = getProgression();
+  const hiddenElement = getHiddenElement(progression);
+  const expression = progression.join(' ').replace(`${hiddenElement}`, UNKNOWN_ELEMENT);
+  return [expression, hiddenElement];
 };
 
 
 export default function startBrainProgression() {
-  countCorrectAnswers(taskText, checkHiddenElement);
+  gameRunner(taskText, getTaskData);
 }

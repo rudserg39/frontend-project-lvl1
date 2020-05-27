@@ -1,27 +1,29 @@
-import {
-  MAX_INTEGER, getRandomInteger, askQuestion,
-  isCorrect, getAnswer, countCorrectAnswers,
-} from '../src/index.js';
+import { MAX_INTEGER, getRandomInteger } from '../helpers/utils.js';
+import gameRunner from '../src/index.js';
 
 
 const taskText = 'What is the result of the expression?';
 
-const operationType = {
-  '+': function addit(x, y) { return x + y; },
-  '-': function subtract(x, y) { return x - y; },
-  '*': function multiplicate(x, y) { return x * y; },
-};
+const operations = ['+', '-', '*'];
 
-const getRandomOperation = (operations) => Object.keys(operations)[
-  getRandomInteger(Object.keys(operations).length)];
+const getTaskData = () => {
+  const [x, y] = [getRandomInteger(MAX_INTEGER), getRandomInteger(MAX_INTEGER)];
+  const operation = operations[getRandomInteger(operations.length - 1)];
+  const expression = `${x}${operation}${y}`;
 
-const checkCalculation = (x = getRandomInteger(MAX_INTEGER),
-  y = getRandomInteger(MAX_INTEGER), operation = getRandomOperation(operationType)) => {
-  askQuestion(`${x}${operation}${y}`);
-  return isCorrect(Number(getAnswer()), operationType[operation](x, y));
+  switch (operation) {
+    case '+':
+      return [expression, x + y];
+    case '-':
+      return [expression, x - y];
+    case '*':
+      return [expression, x * y];
+    default:
+      return [];
+  }
 };
 
 
 export default function startBrainCalc() {
-  countCorrectAnswers(taskText, checkCalculation);
+  gameRunner(taskText, getTaskData);
 }

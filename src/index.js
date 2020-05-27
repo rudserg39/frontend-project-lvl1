@@ -1,50 +1,41 @@
 import readlineSync from 'readline-sync';
 
 
-export const MAX_INTEGER = 16;
-
 const ANSWERS_LIMIT = 3;
 
-const askName = () => {
-  const name = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${name}!`);
-  return name;
-};
+const askName = () => readlineSync.question('May I have your name? ');
 
-const getName = () => {
+const getAnswer = () => readlineSync.question('Your answer: ');
+
+export default function gameRunner(taskText, expression) {
   console.log('Welcome to the Brain Games!');
-  return askName();
-};
+  const name = askName();
+  console.log(`Hello, ${name}!`);
+  console.log(taskText);
 
-const name = getName();
-
-export const getRandomInteger = (max) => Math.floor(Math.random() * Math.floor(max));
-
-export const askQuestion = (expression) => console.log(`Question: ${expression}`);
-
-export const isCorrect = (answer, correctAnswer) => {
-  if (answer === correctAnswer) {
-    console.log('Correct!');
-    return true;
-  }
-  console.log(`"${answer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
-  return false;
-};
-
-export const getAnswer = () => readlineSync.question('Your answer: ');
-
-export const countCorrectAnswers = (greeting, expression) => {
-  console.log(greeting);
   let counter = 0;
+
   while (counter < ANSWERS_LIMIT) {
-    if (expression()) {
-      counter += 1;
+    const [taskData, correctAnswer] = expression();
+
+    if (taskData) {
+      console.log(`Question ${taskData}`);
+      const answer = getAnswer();
+      if (answer === String(correctAnswer)) {
+        counter += 1;
+        console.log('Correct!');
+      } else {
+        console.log(`"${answer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
+        console.log(`Let's try again ${name}!`);
+        return;
+      }
     } else {
-      console.log(`Let's try again ${name}!`);
+      console.log('Expression error. Please, restart the game.');
       return;
     }
+
+    if (counter === ANSWERS_LIMIT) {
+      console.log(`Congratulations, ${name}!`);
+    }
   }
-  if (counter === ANSWERS_LIMIT) {
-    console.log(`Congratulations, ${name}!`);
-  }
-};
+}

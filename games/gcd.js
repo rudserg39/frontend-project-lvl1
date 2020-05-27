@@ -1,7 +1,5 @@
-import {
-  MAX_INTEGER, getRandomInteger, askQuestion,
-  isCorrect, getAnswer, countCorrectAnswers,
-} from '../src/index.js';
+import { MAX_INTEGER, getRandomInteger } from '../helpers/utils.js';
+import gameRunner from '../src/index.js';
 
 
 const taskText = 'Find the greatest common divisor of given numbers.';
@@ -18,13 +16,12 @@ const findGreatestCommonDivisor = (x, y) => {
   return divisor === 0 ? max : divisor;
 };
 
-const checkGreatestCommonDivisor = (x = getRandomInteger(MAX_INTEGER),
-  y = getRandomInteger(MAX_INTEGER)) => {
-  askQuestion(`${x} ${y}`);
-  return isCorrect(Number(getAnswer()), findGreatestCommonDivisor(x, y));
+const getTaskData = () => {
+  const [x, y] = [getRandomInteger(MAX_INTEGER), getRandomInteger(MAX_INTEGER)];
+  return [`${x} ${y}`, findGreatestCommonDivisor(x, y)];
 };
 
 
 export default function startBrainEven() {
-  countCorrectAnswers(taskText, checkGreatestCommonDivisor);
+  gameRunner(taskText, getTaskData);
 }

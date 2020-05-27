@@ -1,7 +1,5 @@
-import {
-  MAX_INTEGER, getRandomInteger, askQuestion,
-  isCorrect, getAnswer, countCorrectAnswers,
-} from '../src/index.js';
+import { MAX_INTEGER, getRandomInteger } from '../helpers/utils.js';
+import gameRunner from '../src/index.js';
 
 
 const taskText = 'Answer "yes" if given number is prime. Otherwise answer "no".';
@@ -15,11 +13,12 @@ const isPrime = (integer) => {
   return integer > 1;
 };
 
-const checkPrime = (integer = getRandomInteger(MAX_INTEGER)) => {
-  askQuestion(`${integer}`);
-  return isCorrect(getAnswer(), isPrime(integer) ? 'yes' : 'no');
+const getTaskData = () => {
+  const integer = getRandomInteger(MAX_INTEGER);
+  return [integer, isPrime(integer) ? 'yes' : 'no'];
 };
 
+
 export default function startBrainPrime() {
-  countCorrectAnswers(taskText, checkPrime);
+  gameRunner(taskText, getTaskData);
 }
