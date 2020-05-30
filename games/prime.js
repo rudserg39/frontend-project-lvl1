@@ -1,4 +1,4 @@
-import { MAX_INTEGER, getRandomInteger } from '../helpers/utils.js';
+import { MAX_INTEGER, getRandomInteger } from '../src/utils.js';
 import gameRunner from '../src/index.js';
 
 
@@ -19,6 +19,4 @@ const getTaskData = () => {
 };
 
 
-export default function startBrainPrime() {
-  gameRunner(taskText, getTaskData);
-}
+export default () => gameRunner(taskText, getTaskData);

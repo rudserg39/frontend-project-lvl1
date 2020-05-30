@@ -3,38 +3,26 @@ import readlineSync from 'readline-sync';
 
 const ANSWERS_LIMIT = 3;
 
-const askName = () => readlineSync.question('May I have your name? ');
-
-const getAnswer = () => readlineSync.question('Your answer: ');
-
 export default function gameRunner(taskText, expression) {
   console.log('Welcome to the Brain Games!');
-  const name = askName();
+  const name = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${name}!`);
   console.log(taskText);
 
-  let counter = 0;
-
-  while (counter < ANSWERS_LIMIT) {
+  for (let i = 1; i <= ANSWERS_LIMIT; i += 1) {
     const [taskData, correctAnswer] = expression();
+    console.log(`Question ${taskData}`);
+    const answer = readlineSync.question('Your answer: ');
 
-    if (taskData) {
-      console.log(`Question ${taskData}`);
-      const answer = getAnswer();
-      if (answer === String(correctAnswer)) {
-        counter += 1;
-        console.log('Correct!');
-      } else {
-        console.log(`"${answer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
-        console.log(`Let's try again ${name}!`);
-        return;
-      }
+    if (answer === String(correctAnswer)) {
+      console.log('Correct!');
     } else {
-      console.log('Expression error. Please, restart the game.');
+      console.log(`"${answer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
+      console.log(`Let's try again ${name}!`);
       return;
     }
 
-    if (counter === ANSWERS_LIMIT) {
+    if (i === ANSWERS_LIMIT) {
       console.log(`Congratulations, ${name}!`);
     }
   }
