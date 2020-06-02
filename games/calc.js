@@ -1,4 +1,4 @@
-import { MAX_INTEGER, getRandomInteger } from '../src/utils.js';
+import getRandomInteger from '../src/utils.js';
 import gameRunner from '../src/index.js';
 
 
@@ -19,13 +19,12 @@ const calculateExpression = (operation, x, y) => {
   }
 };
 
-const getTaskData = () => {
-  const [x, y] = [getRandomInteger(MAX_INTEGER), getRandomInteger(MAX_INTEGER)];
-  const operation = operations[getRandomInteger(operations.length - 1)];
+const prepareGameData = () => {
+  const [x, y] = [getRandomInteger(1, 15), getRandomInteger(1, 15)];
+  const operation = operations[getRandomInteger(0, operations.length - 1)];
   const expression = `${x}${operation}${y}`;
   const result = calculateExpression(operation, x, y);
-  return [expression, result];
+  return [expression, String(result)];
 };
 
-
-export default () => gameRunner(taskText, getTaskData);
+export default () => gameRunner(taskText, prepareGameData);

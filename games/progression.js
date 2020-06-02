@@ -1,10 +1,6 @@
-import { MAX_INTEGER, getRandomInteger } from '../src/utils.js';
+import getRandomInteger from '../src/utils.js';
 import gameRunner from '../src/index.js';
 
-
-const ELEMENTS_TO_ADD = 10;
-
-const UNKNOWN_ELEMENT = '..';
 
 const taskText = 'What number is missing in the progression?';
 
@@ -16,15 +12,13 @@ const generateProgression = (start, step, length = 10) => {
   return progression;
 };
 
-const getHiddenElement = (progression) => progression[getRandomInteger(progression.length - 1)];
-
-const getTaskData = () => {
-  const progression = generateProgression(getRandomInteger(MAX_INTEGER),
-    getRandomInteger(MAX_INTEGER), ELEMENTS_TO_ADD);
-  const hiddenElement = getHiddenElement(progression);
-  const expression = progression.join(' ').replace(`${hiddenElement}`, UNKNOWN_ELEMENT);
-  return [expression, hiddenElement];
+const prepareGameData = () => {
+  const progression = generateProgression(getRandomInteger(1, 15),
+    getRandomInteger(1, 15));
+  const hiddenElement = progression[getRandomInteger(0, progression.length - 1)];
+  const expression = progression.join(' ').replace(hiddenElement, '..');
+  return [expression, String(hiddenElement)];
 };
 
 
-export default () => gameRunner(taskText, getTaskData);
+export default () => gameRunner(taskText, prepareGameData);

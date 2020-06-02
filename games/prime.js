@@ -1,4 +1,4 @@
-import { MAX_INTEGER, getRandomInteger } from '../src/utils.js';
+import getRandomInteger from '../src/utils.js';
 import gameRunner from '../src/index.js';
 
 
@@ -13,10 +13,12 @@ const isPrime = (integer) => {
   return integer > 1;
 };
 
-const getTaskData = () => {
-  const integer = getRandomInteger(MAX_INTEGER);
-  return [integer, isPrime(integer) ? 'yes' : 'no'];
+const getCorrectAnswer = (integer) => (isPrime(integer) ? 'yes' : 'no');
+
+const prepareGameData = () => {
+  const integer = getRandomInteger(1, 15);
+  return [integer, getCorrectAnswer(integer)];
 };
 
 
-export default () => gameRunner(taskText, getTaskData);
+export default () => gameRunner(taskText, prepareGameData);
