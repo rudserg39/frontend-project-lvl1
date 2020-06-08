@@ -1,4 +1,4 @@
-ci:
+install:
 	npm ci
 
 brain-even:
@@ -26,5 +26,5 @@ link:
 	npm link
 
 setup:
-	ci
+	install
 	link
