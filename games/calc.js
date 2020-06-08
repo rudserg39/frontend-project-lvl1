@@ -4,10 +4,10 @@ import gameRunner from '../src/index.js';
 
 const taskText = 'What is the result of the expression?';
 
-const operations = ['+', '-', '*'];
+const operators = ['+', '-', '*'];
 
-const calculateExpression = (operation, x, y) => {
-  switch (operation) {
+const calculateExpression = (operator, x, y) => {
+  switch (operator) {
     case '+':
       return x + y;
     case '-':
@@ -21,10 +21,10 @@ const calculateExpression = (operation, x, y) => {
 
 const prepareGameData = () => {
   const [x, y] = [getRandomInteger(1, 15), getRandomInteger(1, 15)];
-  const operation = operations[getRandomInteger(0, operations.length - 1)];
-  const expression = `${x}${operation}${y}`;
-  const result = calculateExpression(operation, x, y);
-  return [expression, String(result)];
+  const operator = operators[getRandomInteger(0, operators.length - 1)];
+  const expression = `${x}${operator}${y}`;
+  const correctAnswer = String(calculateExpression(operator, x, y));
+  return [expression, correctAnswer];
 };
 
 export default () => gameRunner(taskText, prepareGameData);

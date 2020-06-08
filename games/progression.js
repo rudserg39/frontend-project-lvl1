@@ -12,12 +12,22 @@ const generateProgression = (start, step, length = 10) => {
   return progression;
 };
 
+const getProgressionRandomElementIndex = (progression) => getRandomInteger(0,
+  progression.length - 1);
+
+const changeProgressionElement = (progression, elementIndex, newElement) => {
+  const progressionToChange = progression;
+  progressionToChange[elementIndex] = newElement;
+  return progressionToChange;
+};
+
 const prepareGameData = () => {
   const progression = generateProgression(getRandomInteger(1, 15),
     getRandomInteger(1, 15));
-  const hiddenElement = progression[getRandomInteger(0, progression.length - 1)];
-  const expression = progression.join(' ').replace(hiddenElement, '..');
-  return [expression, String(hiddenElement)];
+  const elementIndexToHide = getProgressionRandomElementIndex(progression);
+  const correctAnswer = String(progression[elementIndexToHide]);
+  const expression = changeProgressionElement(progression, elementIndexToHide, '..').join(' ');
+  return [expression, correctAnswer];
 };
 
 

@@ -1,23 +1,30 @@
-install: 
-	npm install
+ci:
+	npm ci
 
 brain-even:
-	node bin/brain-even.js
-	
+	brain-even
+
 brain-calc:
-	node bin/brain-calc.js
-	
+	brain-calc
+
 brain-gcd:
-	node bin/brain-gcd.js
-	
+	brain-gcd
+
 brain-progression:
-	node bin/brain-progression.js
-	
+	brain-progression
+
 brain-prime:
-	node bin/brain-prime.js
-		
-publish: 
+	brain-prime
+
+publish:
 	npm publish --dry-run
-	
+
 lint:
 	npx eslint .
+
+link:
+	npm link
+
+setup:
+	ci
+	link

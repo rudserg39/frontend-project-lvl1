@@ -4,13 +4,14 @@ import gameRunner from '../src/index.js';
 
 const taskText = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-const isEven = (integer) => integer % 2 === 0;
+const isEven = (expression) => expression % 2 === 0;
 
-const getCorrectAnswer = (integer) => (isEven(integer) ? 'yes' : 'no');
+const getCorrectAnswer = (expression) => (isEven(expression) ? 'yes' : 'no');
 
 const prepareGameData = () => {
-  const integer = getRandomInteger(1, 15);
-  return [integer, getCorrectAnswer(integer)];
+  const expression = getRandomInteger(1, 15);
+  const correctAnswer = getCorrectAnswer(expression);
+  return [expression, correctAnswer];
 };
 
 

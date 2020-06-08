@@ -8,7 +8,9 @@ const findGreatestCommonDivisor = (x, y) => (y === 0 ? x : findGreatestCommonDiv
 
 const prepareGameData = () => {
   const [x, y] = [getRandomInteger(1, 15), getRandomInteger(1, 15)];
-  return [`${x} ${y}`, String(findGreatestCommonDivisor(x, y))];
+  const expression = `${x} ${y}`;
+  const correctAnswer = String(findGreatestCommonDivisor(x, y));
+  return [expression, correctAnswer];
 };
 
 

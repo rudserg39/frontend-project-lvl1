@@ -4,20 +4,21 @@ import gameRunner from '../src/index.js';
 
 const taskText = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-const isPrime = (integer) => {
-  for (let i = 2; i < integer; i += 1) {
-    if (integer % i === 0) {
+const isPrime = (expression) => {
+  for (let i = 2; i < expression; i += 1) {
+    if (expression % i === 0) {
       return false;
     }
   }
-  return integer > 1;
+  return expression > 1;
 };
 
-const getCorrectAnswer = (integer) => (isPrime(integer) ? 'yes' : 'no');
+const getCorrectAnswer = (expression) => (isPrime(expression) ? 'yes' : 'no');
 
 const prepareGameData = () => {
-  const integer = getRandomInteger(1, 15);
-  return [integer, getCorrectAnswer(integer)];
+  const expression = getRandomInteger(1, 15);
+  const correctAnswer = getCorrectAnswer(expression);
+  return [expression, correctAnswer];
 };
 
 

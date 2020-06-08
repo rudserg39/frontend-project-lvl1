@@ -13,14 +13,12 @@ export default function gameRunner(gameDescription, getGameData) {
     const [expression, correctAnswer] = getGameData();
     console.log(`Question ${expression}`);
     const answer = readlineSync.question('Your answer: ');
-
-    if (answer === correctAnswer) {
-      console.log('Correct!');
-    } else {
+    if (answer !== correctAnswer) {
       console.log(`"${answer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
       console.log(`Let's try again ${name}!`);
       return;
     }
+    console.log('Correct!');
   }
   console.log(`Congratulations, ${name}!`);
 }
