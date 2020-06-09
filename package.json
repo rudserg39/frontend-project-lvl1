@@ -1,7 +1,7 @@
 {
-  "name": "frontend-project-lvl1",
+  "name": "@rudserg/frontend-project-lvl1",
   "version": "1.0.0",
-  "description": "",
+  "description": "JavaScript training project by Hexlet",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/rudserg39/frontend-project-lvl1.git"
   },
-  "author": "",
+  "author": "Sergei Rudkovskii",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/rudserg39/frontend-project-lvl1/issues"
