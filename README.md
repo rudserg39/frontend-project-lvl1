@@ -1,14 +1,15 @@
 # frontend-project-lvl1
 
+<img src="https://img.shields.io/badge/npm-v6.14.5-brightgreen" alt="badge">
+<img src="https://img.shields.io/badge/node-v14.2.0-brightgreen" alt="badge">
+<img src="https://img.shields.io/badge/GNU%20Make-v4.2.1-brightgreen" alt="badge">
+
 The project contains five math games. To install games, unpack the files and run "make setup" from the folder. Use the commands: "brain-calc", "brain-even", "brain-gcd", "brain-prime", "brain-progression" to launch the game.
 
 For the program work correctly, use node v14.2.0, npm v6.14.5, GNU Make v4.2.1 and above.
 
 <a href="https://codeclimate.com/github/codeclimate/codeclimate/maintainability"><img src="https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability" /></a>
 <a href="https://github.com/rudserg39/frontend-project-lvl1/actions"><img src="https://github.com/rudserg39/frontend-project-lvl1/workflows/CI/badge.svg" alt="CI" style="max-width:100%;"></a>
-<img src="https://img.shields.io/badge/npm-v6.14.5-brightgreen" alt="badge">
-<img src="https://img.shields.io/badge/node-v14.2.0-brightgreen" alt="badge">
-<img src="https://img.shields.io/badge/GNU%20Make-v4.2.1-brightgreen" alt="badge">
 
 # Program demonstration
 
