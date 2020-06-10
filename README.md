@@ -5,8 +5,6 @@
 
 The project contains five math games. To install games, unpack the files and run "make setup" from the folder. Use the commands: "brain-calc", "brain-even", "brain-gcd", "brain-prime", "brain-progression" to launch the game.
 
-For the program work correctly, use node v14.2.0, npm v6.14.5, GNU Make v4.2.1 and above.
-
 # Program demonstration
 
 ## brain-even
